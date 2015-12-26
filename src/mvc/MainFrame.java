@@ -67,6 +67,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer{
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
@@ -105,6 +106,8 @@ public class MainFrame extends javax.swing.JFrame implements Observer{
         jLabel13.setText("100");
 
         jTextField1.setText("jTextField1");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -317,9 +320,9 @@ public class MainFrame extends javax.swing.JFrame implements Observer{
             BarriereEntreeBean bEBean = (BarriereEntreeBean) namingContext.lookup("java:global/classes/BarriereEntreeBean");
             BarriereEntreeEntity loadedBEE = bEBean.loadState(Integer.parseInt(selectedItem));
             if (loadedBEE != null){
+                BarriereEntree.getInstance().setState(loadedBEE.getState());
                 if (loadedBEE.getState().equals("open"))
                     entervisiteur.doClick();
-                BarriereEntree.getInstance().setState(loadedBEE.getState());
             } else {
                 JOptionPane.showMessageDialog(null, "Impossible de charger l'état "+selectedItem+" de BarriereEntree.");
             }
@@ -327,9 +330,9 @@ public class MainFrame extends javax.swing.JFrame implements Observer{
             BarriereSortieBean bSBean = (BarriereSortieBean) namingContext.lookup("java:global/classes/BarriereSortieBean");
             BarriereSortieEntity loadedBSE = bSBean.loadState(Integer.parseInt(selectedItem));
             if (loadedBSE != null){
+                BarriereSortie.getInstance().setState(loadedBSE.getState());
                 if (loadedBSE.getState().equals("open"))
                     getout.doClick();
-                BarriereSortie.getInstance().setState(loadedBSE.getState());
             } else {
                 JOptionPane.showMessageDialog(null, "Impossible de charger l'état "+selectedItem+" de BarriereSortie.");
             }
@@ -405,6 +408,7 @@ public class MainFrame extends javax.swing.JFrame implements Observer{
     private javax.swing.JButton enteremploye;
     private javax.swing.JButton entervisiteur;
     private javax.swing.JButton getout;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
